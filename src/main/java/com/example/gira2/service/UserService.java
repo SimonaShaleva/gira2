@@ -6,4 +6,6 @@ public interface UserService {
     UserServiceModel findByEmailAndPassword(String email, String password);
 
     void registerUser(UserServiceModel userServiceModel);
+
+    UserServiceModel findById(Long id);
 }

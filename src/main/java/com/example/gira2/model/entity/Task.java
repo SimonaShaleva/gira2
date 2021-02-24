@@ -47,7 +47,7 @@ public class Task extends BaseEntity {
         return this;
     }
 
-    @Column(name = "progress_name", unique = true)
+    @Column(name = "progress_name")
     @Enumerated(EnumType.STRING)
     public ProgressEnum getProgressName() {
         return progressName;

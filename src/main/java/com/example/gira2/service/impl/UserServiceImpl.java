@@ -24,6 +24,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserServiceModel findById(Long id) {
+        return modelMapper.map(userRepository.findById(id).orElse(null), UserServiceModel.class);
+    }
+
+    @Override
     public UserServiceModel findByEmailAndPassword(String email, String password) {
        return userRepository.findByEmailAndPassword(email,password)
         .map(user -> modelMapper.map(user, UserServiceModel.class)).orElse(null);

@@ -11,8 +11,9 @@ public class Classification extends BaseEntity {
     public Classification() {
     }
 
-    public Classification(ClassificationEnum classification) {
+    public Classification(ClassificationEnum classification, String description) {
         this.classification = classification;
+        this.description = description;
     }
 
     @Column(name = "classification_name", unique = true)

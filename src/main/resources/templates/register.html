@@ -45,7 +45,7 @@
             <label for="confirmPassword" class="h4 mb-2">Confirm Password</label>
           </div>
           <input th:field="*{confirmPassword}" th:errorclass="bg-danger" type="password" class="form-control" id="confirmPassword" name="confirmPassword" />
-           <small th:unless="${areTheSame}" class="text-danger new-line">Password and ConfirmPassword are different!</small>
+           <small th:if="${areDiff}" class="text-danger new-line">Password and Confirm Password are different!</small>
         </div>
 
         <div class="button-holder d-flex justify-content-center">

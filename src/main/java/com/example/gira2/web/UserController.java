@@ -31,7 +31,7 @@ public class UserController {
     public String register(Model model) {
         if (!model.containsAttribute("userRegisterBindingModel")) {
             model.addAttribute(new UserRegisterBindingModel());
-            model.addAttribute("areTheSame", true);
+            model.addAttribute("areDiff", false);
         }
         return "register";
     }
@@ -40,19 +40,19 @@ public class UserController {
     public String registerPost(@Valid UserRegisterBindingModel userRegisterBindingModel,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
-        boolean areTheSame = userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword());
-
-        if (!areTheSame) {
-            redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
-            redirectAttributes.addFlashAttribute("areTheSame", false);
-
-            return redirectRegister();
-        }
+        boolean areDiff = !userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword());
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
             redirectAttributes.addFlashAttribute(
                     "org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
+
+            return redirectRegister();
+        }
+
+        if (areDiff) {
+            redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
+            redirectAttributes.addFlashAttribute("areDiff", true);
 
             return redirectRegister();
         }

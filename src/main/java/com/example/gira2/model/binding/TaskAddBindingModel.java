@@ -8,7 +8,6 @@ import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class TaskAddBindingModel {
     private String name;
@@ -20,7 +19,7 @@ public class TaskAddBindingModel {
     }
 
     @Length(min = 3, max = 20, message = "Name length must be between 3 and 20 characters (inclusive 3 and 20).")
-    @NotBlank
+    @NotBlank(message = "Please enter valid value!")
     public String getName() {
         return name;
     }
@@ -31,7 +30,7 @@ public class TaskAddBindingModel {
     }
 
     @Length(min = 5, message = "Description min length must be minimum 5(inclusive) characters")
-    @NotBlank
+    @NotBlank(message = "Please enter valid value!")
     public String getDescription() {
         return description;
     }
@@ -43,7 +42,7 @@ public class TaskAddBindingModel {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @FutureOrPresent(message = "The date cannot be in the past!")
-    @NotNull
+    @NotNull(message = "Please enter valid value!")
     public LocalDate getDueDate() {
         return dueDate;
     }

@@ -18,7 +18,8 @@ public class ClassificationServiceImpl implements ClassificationService {
     public void initClassifications() {
         if (classificationRepository.count() != ClassificationEnum.values().length) {
             for (ClassificationEnum c : ClassificationEnum.values()) {
-                classificationRepository.save(new Classification(c));
+                classificationRepository.save(new Classification(c,
+                        String.format("This is a %s problem!", c)));
             }
         }
     }

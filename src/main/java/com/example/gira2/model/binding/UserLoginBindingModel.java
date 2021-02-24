@@ -13,7 +13,7 @@ public class UserLoginBindingModel {
     }
 
     @Email(message = "Enter valid email.")
-    @NotBlank
+    @NotBlank(message = "Please enter valid value!")
     public String getEmail() {
         return email;
     }
@@ -24,7 +24,7 @@ public class UserLoginBindingModel {
     }
 
     @Length(min = 3, max = 20, message = "Password length must be between 3 and 20 characters (inclusive 3 and 20).")
-    @NotBlank
+    @NotBlank(message = "Please enter valid value!")
     public String getPassword() {
         return password;
     }
